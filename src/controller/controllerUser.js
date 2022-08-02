@@ -1,9 +1,14 @@
 const userSchema= require("../model/users");
 
 const getLogin= (req,res)=>{
-    res.send("<h1>Hello World</h1>")
+    res.render("Login.ejs");
+};
+
+const getRegister= (req,res)=>{
+    res.render("Register.ejs");
 };
 
 module.exports={
-    getLogin
+    getLogin,
+    getRegister
 }

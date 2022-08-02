@@ -18,6 +18,9 @@ const userSchema= mongoose.Schema({
     },
     empresa:{
         type: String
+    },
+    autoridad:{
+        type: String
     }
 });
 
