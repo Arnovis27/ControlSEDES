@@ -66,10 +66,20 @@ const createUser= (req,res)=>{
     });
 };
 
+const deleteUser= (req,res)=>{
+    var id= req.params.id;
+    userSchema.remove({_id:id},(err,data)=>{
+        if(err) throw err;
+        console.log("Eliminado");
+        res.redirect("/api/v1/dash");
+    });
+};
+
 module.exports={
     getLogin,
     getRegister,
     createUser,
     verfilog,
-    dashboardS
+    dashboardS,
+    deleteUser
 }

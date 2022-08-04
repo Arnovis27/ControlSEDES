@@ -9,7 +9,7 @@
     <body>
         <div class="container">
             <h1>HOME</h1>
-            <a class="btn btn-primary" href="/api/v1/register" role="button">CREATE</a>
+            <a class="btn btn-primary" href="/api/v1/register" role="button">CREATE USER</a>
             <a class="btn btn-danger" href="#" style="float: right;">Cerrar Sesion</a>
         </div>  
         <hr>
@@ -37,7 +37,7 @@
                                 <td><%= tasks[i].telefono %></td>
                                 <td><%= tasks[i].autoridad %></td>
                                 <td><a class="btn btn-primary" href="#">Update</a>
-                                <a class="btn btn-danger" href="#">Delete</a></td>
+                                <a class="btn btn-danger" href="/api/v1/dash/delete/<%= tasks[i]._id%>">Delete</a></td>
                             </tr>
                         <%} %>
                     </tbody>
