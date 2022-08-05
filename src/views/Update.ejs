@@ -13,20 +13,20 @@
         </div>
         <hr>
         <div class="container">
-          <form action="/api/v1/register/add" method="POST">
+          <form action="/api/v1/dash/update/add/<%= tasks.id%>" method="POST">
             <div class="mb-3">
                 <label for="nombres" class="form-label">Nombres</label>
-                <input type="text" class="form-control" id="nombres" name="nombres" aria-describedby="text">
+                <input type="text" value="<%= tasks.nombres%>" class="form-control" id="nombres" name="nombres" aria-describedby="text">
             </div>
 
             <div class="mb-3">
                 <label for="apellidos" class="form-label">Apellidos</label>
-                <input type="text" class="form-control" id="apellidos" name="apellidos" aria-describedby="text">
+                <input type="text" value="<%= tasks.apellidos%>" class="form-control" id="apellidos" name="apellidos" aria-describedby="text">
             </div>
 
             <div class="mb-3">
               <label for="email" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+              <input type="email" value="<%= tasks.email%>" class="form-control" id="email" name="email" aria-describedby="emailHelp">
             </div>
 
             <div class="mb-3">
@@ -36,12 +36,12 @@
 
             <div class="mb-3">
                 <label for="telefono" class="form-label">Telefono</label>
-                <input type="number" class="form-control" id="telefono" name="telefono" aria-describedby="number">
+                <input type="number" value="<%= tasks.telefono%>" class="form-control" id="telefono" name="telefono" aria-describedby="number">
             </div>
 
             <div class="mb-3">
                 <label for="empresa" class="form-label">Empresa</label>
-                <input type="text" class="form-control" id="empresa" name="empresa" aria-describedby="text">
+                <input type="text" value="empresa" class="form-control" id="empresa" name="empresa" aria-describedby="text">
             </div>
 
             <div class="mb-3">

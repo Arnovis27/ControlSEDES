@@ -36,7 +36,7 @@
                                 <td><%= tasks[i].email %></td>
                                 <td><%= tasks[i].telefono %></td>
                                 <td><%= tasks[i].autoridad %></td>
-                                <td><a class="btn btn-primary" href="#">Update</a>
+                                <td><a class="btn btn-primary" href="/api/v1/dash/select/<%= tasks[i]._id%>">Update</a>
                                 <a class="btn btn-danger" href="/api/v1/dash/delete/<%= tasks[i]._id%>">Delete</a></td>
                             </tr>
                         <%} %>

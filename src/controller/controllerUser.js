@@ -1,3 +1,4 @@
+const { update } = require("../model/users");
 const userSchema= require("../model/users");
 
 //agregando la cuenta admin
@@ -59,7 +60,7 @@ const createUser= (req,res)=>{
 
     user.save().then(()=>{
         console.log("Empleado Creado");
-        res.redirect("/api/v1/");
+        res.redirect("/api/v1/dash");
     }).catch((error)=>{
         console.error(error)
         res.redirect("/api/v1/register")
@@ -75,11 +76,31 @@ const deleteUser= (req,res)=>{
     });
 };
 
+const selectUser= (req,res)=>{
+    var id= req.params.id;
+    userSchema.findById(id,(error,data)=>{
+        res.render("Update.ejs",{
+            title:"Update",
+            tasks: data
+        });
+    });
+};
+
+const updateUser= (req,res)=>{
+    var id= req.params.id;
+    const {nombres, apellidos, email, password,telefono, empresa, autoridad}= req.body;
+    userSchema.findByIdAndUpdate(id,{nombres, apellidos, email, password,telefono, empresa, autoridad}).then(()=>{
+        res.redirect("/api/v1/dash");
+    }).catch((error)=>console.error(error));
+};
+
 module.exports={
     getLogin,
     getRegister,
     createUser,
     verfilog,
     dashboardS,
-    deleteUser
+    deleteUser,
+    selectUser,
+    updateUser
 }
