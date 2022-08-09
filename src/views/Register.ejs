@@ -41,7 +41,12 @@
 
             <div class="mb-3">
                 <label for="empresa" class="form-label">Empresa</label>
-                <input type="text" class="form-control" id="empresa" name="empresa" aria-describedby="text">
+                <select id="empresa" name="empresa">
+                  <option value="null">---</option>
+                  <%for (var i=0; i < tasks.length; i++) {%>
+                  <option value=tasks[i].ncomercial><%= tasks[i].ncomercial %></option>
+                  <%} %>
+              </select>
             </div>
 
             <div class="mb-3">

@@ -1,4 +1,5 @@
 const userSchema= require("../model/users");
+const empresaSchema= require("../model/empresa");
 
 //agregando la cuenta admin
 const superuser= new userSchema({
@@ -50,7 +51,13 @@ const dashboardS= (req,res)=>{
 };
 
 const getRegister= (req,res)=>{
-    res.render("Register.ejs");
+    empresaSchema.find({},(error,data)=>{
+        if(error) throw error;
+        res.render("Register.ejs",{
+            title: "DATA",
+            tasks: data
+        });
+    })
 };
 
 const createUser= (req,res)=>{
