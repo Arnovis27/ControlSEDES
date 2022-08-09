@@ -1,4 +1,3 @@
-const { update } = require("../model/users");
 const userSchema= require("../model/users");
 
 //agregando la cuenta admin
