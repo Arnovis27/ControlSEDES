@@ -17,5 +17,6 @@ router.get("/dash/delete/:id", userController.deleteUser);
 router.get("/dash/emp",empresaController.dashboardEmp);
 router.get("/dash/empresa",empresaController.createEmpresa);
 router.post("/dash/empresa/add",empresaController.addEmpresa);
+router.get("/dash/emp/delete/:id", empresaController.revoquEmpresa);
 
 module.exports= router;

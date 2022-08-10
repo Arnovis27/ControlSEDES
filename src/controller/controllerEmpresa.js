@@ -26,9 +26,19 @@ const addEmpresa= (req,res)=>{
     });
 };
 
+const revoquEmpresa= (req,res)=>{
+    var id= req.params.id;
+    empresaSchema.remove({_id: id},(err,data)=>{
+        if (err) throw data;
+        console.log("Empresa Eliminada");
+        res.redirect("/api/v1/dash/emp");
+    });
+};
+
 
 module.exports= {
     dashboardEmp,
     createEmpresa,
-    addEmpresa
+    addEmpresa,
+    revoquEmpresa
 }
