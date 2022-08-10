@@ -19,7 +19,7 @@
                 <select id="admin" name="admin">
                   <option value="null">---</option>
                   <%for (var i=0; i < tasks.length; i++) {%>
-                  <option value=tasks[i].nombres><%= tasks[i].nombres %></option>
+                  <option value="<%= tasks[i].nombres%>"><%= tasks[i].nombres %></option>
                   <%} %>
               </select>
             </div>

@@ -44,7 +44,7 @@
                 <select id="empresa" name="empresa">
                   <option value="null">---</option>
                   <%for (var i=0; i < tasks.length; i++) {%>
-                  <option value=tasks[i].ncomercial><%= tasks[i].ncomercial %></option>
+                  <option value="<%= tasks[i].ncomercial%>"><%= tasks[i].ncomercial %></option>
                   <%} %>
               </select>
             </div>
