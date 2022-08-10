@@ -1,4 +1,5 @@
 const empresaSchema= require("../model/empresa");
+const userSchema= require("../model/users");
 
 const dashboardEmp= (req,res)=>{
     empresaSchema.find({},(error,data)=>{
@@ -11,7 +12,13 @@ const dashboardEmp= (req,res)=>{
 };
 
 const createEmpresa= (req,res)=>{
-    res.render("CreateEmpresa.ejs");
+    userSchema.find({},(error,data)=>{
+        if(error) throw error;
+        res.render("CreateEmpresa.ejs",{
+            title: "DATA",
+            tasks: data
+        });
+    })
 };
 
 const addEmpresa= (req,res)=>{

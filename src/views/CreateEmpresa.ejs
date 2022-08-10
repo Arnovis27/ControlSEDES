@@ -16,7 +16,12 @@
           <form action="/api/v1/dash/empresa/add" method="POST">
             <div class="mb-3">
                 <label for="admin" class="form-label">Admin</label>
-                <input type="text" class="form-control" id="admin" name="admin" aria-describedby="text">
+                <select id="admin" name="admin">
+                  <option value="null">---</option>
+                  <%for (var i=0; i < tasks.length; i++) {%>
+                  <option value=tasks[i].nombres><%= tasks[i].nombres %></option>
+                  <%} %>
+              </select>
             </div>
 
             <div class="mb-3">
