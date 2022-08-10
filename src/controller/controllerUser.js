@@ -84,10 +84,13 @@ const deleteUser= (req,res)=>{
 
 const selectUser= (req,res)=>{
     var id= req.params.id;
-    userSchema.findById(id,(error,data)=>{
-        res.render("Update.ejs",{
-            title:"Update",
-            tasks: data
+    empresaSchema.find({},(error,data2)=>{
+        userSchema.findById(id,(error,data)=>{
+            res.render("Update.ejs",{
+                title:"Update",
+                tasks: data,
+                tasks2: data2
+            });
         });
     });
 };

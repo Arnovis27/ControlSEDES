@@ -9,7 +9,7 @@
 
     <body>
         <div class="container">
-          <h1>Register</h1>
+          <h1>Update</h1>
         </div>
         <hr>
         <div class="container">
@@ -41,7 +41,12 @@
 
             <div class="mb-3">
                 <label for="empresa" class="form-label">Empresa</label>
-                <input type="text" value="empresa" class="form-control" id="empresa" name="empresa" aria-describedby="text">
+                <select id="empresa" name="empresa">
+                  <option value="null">---</option>
+                  <%for (var i=0; i < tasks2.length; i++) {%>
+                  <option value=tasks2[i].ncomercial><%= tasks2[i].ncomercial %></option>
+                  <%} %>
+              </select>
             </div>
 
             <div class="mb-3">
