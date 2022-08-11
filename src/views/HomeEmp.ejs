@@ -36,7 +36,7 @@
                                 <td><%= tasks[i].nombre %></td>
                                 <td><%= tasks[i].ncomercial %></td>
                                 <td><%= tasks[i].web %></td>
-                                <td><a class="btn btn-primary" href="#">Update</a>
+                                <td><a class="btn btn-primary" href="/api/v1/dash/emp/select/<%= tasks[i]._id%>">Update</a>
                                 <a class="btn btn-danger" href="/api/v1/dash/emp/delete/<%= tasks[i]._id%>">Delete</a></td>
                             </tr>
                         <%} %>

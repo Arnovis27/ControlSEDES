@@ -42,10 +42,33 @@ const revoquEmpresa= (req,res)=>{
     });
 };
 
+const selectEmpresa= (req,res)=>{
+    var id= req.params.id;
+    userSchema.find({},(error,data2)=>{
+        empresaSchema.findById(id,(error,data)=>{
+            res.render("UpdatEmpresa.ejs",{
+                title:"Update",
+                tasks: data,
+                tasks2: data2
+            });
+        });
+    });
+};
+
+const updatEmpresa= (req,res)=>{
+    var id= req.params.id;
+    const {admin, nit, nombre, ncomercial,telefono, direccion, correo, web}= req.body;
+    empresaSchema.findByIdAndUpdate(id,{admin, nit, nombre, ncomercial,telefono, direccion, correo, web}).then(()=>{
+        res.redirect("/api/v1/dash/emp");
+    }).catch((error)=>console.error(error));
+};
+
 
 module.exports= {
     dashboardEmp,
     createEmpresa,
     addEmpresa,
-    revoquEmpresa
+    revoquEmpresa,
+    selectEmpresa,
+    updatEmpresa
 }
