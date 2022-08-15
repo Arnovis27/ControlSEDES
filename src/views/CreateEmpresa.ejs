@@ -18,8 +18,10 @@
                 <label for="admin" class="form-label">Admin</label>
                 <select id="admin" name="admin">
                   <option value="null">---</option>
-                  <%for (var i=0; i < tasks.length; i++) {%>
-                  <option value="<%= tasks[i].nombres%>"><%= tasks[i].nombres %></option>
+                  <%for (var j=0; j < tasks.length; j++) {%>
+                    <%if (tasks[j].autoridad == "Admin") {%>
+                        <option value="<%= tasks[j].nombres%>"><%= tasks[j].nombres %></option>
+                    <% }%>
                   <%} %>
               </select>
             </div>
@@ -60,7 +62,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
-            <a class="btn btn-danger" href="#">Back</a>
+            <a class="btn btn-danger" href="/api/v1/dash/emp">Back</a>
           </form>
         </div>
         <br>
