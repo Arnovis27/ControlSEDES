@@ -12,6 +12,7 @@ router.post("/register/add", userController.createUser);
 router.get("/dash/select/:id", userController.selectUser);
 router.post("/dash/update/add/:id", userController.updateUser);
 router.get("/dash/delete/:id", userController.deleteUser);
+router.get("/dash/logout",userController.logout);
 
 //for empresa
 router.get("/dash/emp",empresaController.dashboardEmp);

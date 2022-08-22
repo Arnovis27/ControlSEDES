@@ -12,8 +12,16 @@ const superuser= new userSchema({
     autoridad: "SuperUser",
 });
 
+var global;
 var consulta;
 var usersup= superuser["email"];
+
+var autorizado= function(req, res, next) {
+    if (global === "SuperUser")
+      return next();
+    else
+      return res.sendStatus(401);
+};
 
 //validando que el admin ya exista
 userSchema.findOne({email:usersup}).then((data)=>{
@@ -32,7 +40,15 @@ const verfilog= (req,res)=>{
     const {email, password}= req.body;
     userSchema.findOne({email, password}).then((data)=>{
         if(data!=null){
-            res.redirect("/api/v1/dash");
+            req.session.user= req.body.email;
+            req.session.autoridad=data.autoridad;
+            if(req.session.autoridad== "SuperUser"){
+                global= req.session.autoridad;
+                res.redirect("/api/v1/dash");
+            }else{
+                global=0;
+                res.redirect("/api/v1/");
+            }
         } else{
             res.redirect("/api/v1/");
         };
@@ -40,7 +56,14 @@ const verfilog= (req,res)=>{
 
 };
 
-const dashboardS= (req,res)=>{
+const logout= (req,res)=>{
+    req.session.destroy();
+    global=0;
+    res.redirect("/api/v1/")
+};
+
+//como proteger las rutas ?
+const dashboardS= (autorizado,(req,res)=>{
     userSchema.find({},(error,data)=>{
         if(error) throw error;
         res.render("HomeSup.ejs",{
@@ -48,7 +71,7 @@ const dashboardS= (req,res)=>{
             tasks: data
         });
     })
-};
+});
 
 const getRegister= (req,res)=>{
     empresaSchema.find({},(error,data)=>{
@@ -63,6 +86,7 @@ const getRegister= (req,res)=>{
 const createUser= (req,res)=>{
     var body= req.body;
     var user= userSchema(body);
+    console.log(req.empresa);
 
     user.save().then(()=>{
         console.log("Empleado Creado");
@@ -111,5 +135,6 @@ module.exports={
     dashboardS,
     deleteUser,
     selectUser,
-    updateUser
+    updateUser,
+    logout
 }

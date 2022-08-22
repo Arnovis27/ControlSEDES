@@ -7,11 +7,19 @@ const ruta= require("./v1/routes/routes");
 const mongoose= require("mongoose");
 const path= require("path");
 require("dotenv").config();
+var session = require('express-session');
+const cookieParser = require('cookie-parser');
 
 app.use(logger("dev"));
 app.use(bodyParser.urlencoded({extended: false}));
 app.set("views", path.join(__dirname,"views"));
 app.set("view engine", "ejs");
+app.use(cookieParser());
+app.use( session( {
+    secret: process.env.TOKEN_SECRET,
+    resave: true,
+    saveUninitialized: true
+}));
 
 //rutas
 app.use("/api/v1",ruta);
