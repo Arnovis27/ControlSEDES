@@ -16,7 +16,7 @@ var global;
 var consulta;
 var usersup= superuser["email"];
 
-var autorizado= function(req, res, next) {
+const autorizado= function(req, res, next) {
     if (global === "SuperUser")
       return next();
     else
@@ -63,7 +63,7 @@ const logout= (req,res)=>{
 };
 
 //como proteger las rutas ?
-const dashboardS= (autorizado,(req,res)=>{
+const dashboardS= (req,res)=>{
     userSchema.find({},(error,data)=>{
         if(error) throw error;
         res.render("HomeSup.ejs",{
@@ -71,7 +71,7 @@ const dashboardS= (autorizado,(req,res)=>{
             tasks: data
         });
     })
-});
+};
 
 const getRegister= (req,res)=>{
     empresaSchema.find({},(error,data)=>{
@@ -136,5 +136,6 @@ module.exports={
     deleteUser,
     selectUser,
     updateUser,
-    logout
+    logout,
+    autorizado
 }
