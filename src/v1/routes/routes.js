@@ -15,11 +15,11 @@ router.get("/dash/delete/:id",userController.autorizado ,userController.deleteUs
 router.get("/dash/logout",userController.autorizado,userController.logout);
 
 //for empresa
-router.get("/dash/emp",empresaController.dashboardEmp);
-router.get("/dash/empresa",empresaController.createEmpresa);
-router.post("/dash/empresa/add",empresaController.addEmpresa);
-router.get("/dash/emp/select/:id",empresaController.selectEmpresa);
-router.post("/dash/emp/update/add/:id",empresaController.updatEmpresa);
-router.get("/dash/emp/delete/:id", empresaController.revoquEmpresa);
+router.get("/dash/emp",userController.autorizado,empresaController.dashboardEmp);
+router.get("/dash/empresa",userController.autorizado,empresaController.createEmpresa);
+router.post("/dash/empresa/add",userController.autorizado,empresaController.addEmpresa);
+router.get("/dash/emp/select/:id",userController.autorizado,empresaController.selectEmpresa);
+router.post("/dash/emp/update/add/:id",userController.autorizado,empresaController.updatEmpresa);
+router.get("/dash/emp/delete/:id", userController.autorizado,empresaController.revoquEmpresa);
 
 module.exports= router;
